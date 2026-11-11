@@ -83,7 +83,9 @@
     let x = 0, y = 0, cx = 0, cy = 0;
     list.addEventListener("mouseover", (e) => {
       const li = e.target.closest(".price");
-      if (li && li.dataset.img) { cimg.style.backgroundImage = `url("${li.dataset.img}")`; cimg.classList.add("is-on"); }
+      if (!li) return;
+      if (li.dataset.img) { cimg.style.backgroundImage = `url("${li.dataset.img}")`; cimg.classList.add("is-on"); }
+      else cimg.classList.remove("is-on");
     });
     list.addEventListener("mouseleave", () => cimg.classList.remove("is-on"));
     addEventListener("mousemove", (e) => { x = e.clientX; y = e.clientY; });
